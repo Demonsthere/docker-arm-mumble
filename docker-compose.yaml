@@ -1,0 +1,12 @@
+---
+version: '3'
+services:
+  mumble:
+    build:
+      context: './server'
+    ports:
+        - "64738:64738"
+    restart: always
+    # volumes:
+    #   - "/opt/mumble:/opt/mumble:rw"
+    container_name: mumble-server
