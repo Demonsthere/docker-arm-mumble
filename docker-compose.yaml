@@ -1,12 +1,17 @@
 ---
-version: '3'
+version: '3.2'
 services:
   mumble:
     build:
       context: './server'
     ports:
-        - "64738:64738"
+      - "64738:64738"
     restart: always
-    # volumes:
-    #   - "/opt/mumble:/opt/mumble:rw"
+    volumes:
+      - type: volume
+        source: './data'
+        target: '/opt/mumble'
+        read_only: false
+        volume:
+          nocopy: false
     container_name: mumble-server
