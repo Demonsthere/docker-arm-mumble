@@ -1,4 +1,4 @@
-FROM armv7/armhf-ubuntu:latest
+FROM arm32v7/debian:stretch-slim
 MAINTAINER daemonsthere@gmail.com
 
 ADD files/qemu-arm-static /usr/bin/qemu-arm-static
