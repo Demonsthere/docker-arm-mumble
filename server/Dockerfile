@@ -1,7 +1,10 @@
 FROM armv7/armhf-ubuntu:latest
 MAINTAINER daemonsthere@gmail.com
 
-RUN apt-get update &&\
+ADD files/qemu-arm-static /usr/bin/qemu-arm-static
+
+RUN useradd -d /opt/mumble -m -s /bin/bash mumble &&\
+  apt-get update &&\
   apt-get install -y mumble-server &&\
   apt-get -y autoremove &&\
   apt-get -y autoclean &&\
@@ -10,6 +13,7 @@ RUN apt-get update &&\
 ADD files/mumble-server.ini /opt/mumble/mumble-server.ini
 
 EXPOSE 64738/udp
+USER mumble
 
 ENTRYPOINT ["murmurd"]
 CMD ["-fg", "-ini", "/opt/mumble/mumble-server.ini"]
