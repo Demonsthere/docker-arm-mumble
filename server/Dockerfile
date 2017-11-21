@@ -4,7 +4,7 @@ MAINTAINER daemonsthere@gmail.com
 ADD files/qemu-arm-static /usr/bin/qemu-arm-static
 
 RUN useradd -d /opt/mumble -m -s /bin/bash mumble &&\
-  apt-get update &&\
+  apt-get update --fix-missing &&\
   apt-get install -y mumble-server &&\
   apt-get -y autoremove &&\
   apt-get -y autoclean &&\
