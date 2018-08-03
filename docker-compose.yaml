@@ -1,5 +1,5 @@
 ---
-version: '3.2'
+version: '3'
 services:
   mumble:
     build:
@@ -8,10 +8,9 @@ services:
       - "64738:64738"
     restart: always
     volumes:
-      - type: volume
+      - type: bind
         source: './data'
         target: '/opt/mumble'
         read_only: false
-        volume:
-          nocopy: false
     container_name: mumble-server
+    
